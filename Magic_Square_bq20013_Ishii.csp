@@ -1,0 +1,26 @@
+; Magic Sqaure of order 4
+
+; x00 x01 x02 x03
+; x10 x11 x12 x13
+; x20 x21 x22 x23
+; x30 x31 x32 x33
+
+(domain d 1 16)
+
+(int x00 d) (int x01 d) (int x02 d) (int x03 d)
+(int x10 d) (int x11 d) (int x12 d) (int x13 d)
+(int x20 d) (int x21 d) (int x22 d) (int x23 d)
+(int x30 d) (int x31 d) (int x32 d) (int x33 d)
+
+(= (+ x00 x01 x02 x03) 34)
+(= (+ x10 x11 x12 x13) 34)
+(= (+ x20 x21 x22 x23) 34)
+(= (+ x30 x31 x32 x33) 34)
+(= (+ x00 x10 x20 x30) 34)
+(= (+ x01 x11 x21 x31) 34)
+(= (+ x02 x12 x22 x32) 34)
+(= (+ x03 x13 x23 x33) 34)
+(= (+ x00 x11 x22 x33) 34)
+(= (+ x30 x21 x12 x03) 34)
+
+(alldifferent x00 x01 x02 x03 x10 x11 x12 x13 x20 x21 x22 x23 x30 x31 x32 x33)

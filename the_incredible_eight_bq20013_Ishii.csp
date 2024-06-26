@@ -1,0 +1,149 @@
+; https://www.brainzilla.com/logic/self-referential-quiz/the-incredible-eight/
+
+(int a1 0 3) ; 0..A, 1..B, 2..C, 3..D
+(int a2 0 3) ; 0..A, 1..B, 2..C, 3..D
+(int a3 0 3) ; 0..A, 1..B, 2..C, 3..D
+(int a4 0 3) ; 0..A, 1..B, 2..C, 3..D
+(int a5 0 3) ; 0..A, 1..B, 2..C, 3..D
+(int a6 0 3) ; 0..A, 1..B, 2..C, 3..D
+(int a7 0 3) ; 0..A, 1..B, 2..C, 3..D
+(int a8 0 3) ; 0..A, 1..B, 2..C, 3..D
+
+(int na 0 8) ; the number of A
+(int nb 0 8) ; the number of B
+(int nc 0 8) ; the number of C
+(int nd 0 8) ; the number of D
+(count 0 (a1 a2 a3 a4 a5 a6 a7 a8) eq na)
+(count 1 (a1 a2 a3 a4 a5 a6 a7 a8) eq nb)
+(count 2 (a1 a2 a3 a4 a5 a6 a7 a8) eq nc)
+(count 3 (a1 a2 a3 a4 a5 a6 a7 a8) eq nd)
+
+; 1. C is the correct answer to how many questions?
+(iff (eq a1 0) (eq nc 1))
+(iff (eq a1 1) (eq nc 2))
+(iff (eq a1 2) (eq nc 3))
+(iff (eq a1 3) (eq nc 4))
+
+; 2. Which letter is the correct answer fewer times than any other?
+(iff (eq a2 0) (and (< nd na) (< nd nb) (< nd nc)))
+(iff (eq a2 1) (and (< nb na) (< nb nc) (< nb nd)))
+(iff (eq a2 2) (and (< nc na) (< nc nb) (< nc nd)))
+(iff (eq a2 3) (and (< na nb) (< na nc) (< na nd)))
+
+; 3. Which letter is the correct answer more times than any other?
+(iff (eq a3 0) (and (> nd na) (> nd nb) (> nd nc)))
+(iff (eq a3 1) (and (> nc na) (> nc nb) (> nc nd)))
+(iff (eq a3 2) (and (> nb na) (> nb nc) (> nb nd)))
+(iff (eq a3 3) (and (> na nb) (> na nc) (> na nd)))
+
+; 4. Which one of these is the only true statement?
+(iff (eq a4 0) (eq na 4))
+(iff (eq a4 1) (eq na 1))
+(iff (eq a4 2) (eq nb 0))
+(iff (eq a4 3) (eq na nc))
+
+; 5. When is A the correct answer for the first time?
+(iff (eq a5 0) (and (ne a1 0) (ne a2 0) (ne a3 0) (ne a4 0) (eq a5 0)))
+(iff (eq a5 1) (and (ne a1 0) (ne a2 0) (ne a3 0) (ne a4 0) (ne a5 0) (eq a6 0)))
+(iff (eq a5 2) (and (ne a1 0) (ne a2 0) (ne a3 0) (ne a4 0) (ne a5 0) (ne a6 0) (eq a7 0)))
+(iff (eq a5 3) (eq a1 0))
+
+; 6. How many occurrences of the most common answer are there?
+(iff (eq a6 0) (and (eq (max na (max nb (max nc nd))) 3)))
+(iff (eq a6 1) (and (eq (max na (max nb (max nc nd))) 4)))
+(iff (eq a6 2) (and (eq (max na (max nb (max nc nd))) 5)))
+(iff (eq a6 3) (and (eq (max na (max nb (max nc nd))) 6)))
+
+; 7. Which ones are the only two consecutive questions with the same answer?
+(iff (eq a7 0) (and (eq a2 a3) (ne a1 a2) (ne a3 a4) (ne a4 a5) (ne a5 a6) (ne a6 a7) (ne a7 a8)))
+(iff (eq a7 1) (and (eq a7 a8) (ne a1 a2) (ne a2 a3) (ne a3 a4) (ne a4 a5) (ne a5 a6) (ne a6 a7)))
+(iff (eq a7 2) (and (eq a1 a2) (ne a2 a3) (ne a3 a4) (ne a4 a5) (ne a5 a6) (ne a6 a7) (ne a7 a8)))
+(iff (eq a7 3) (and (eq a4 a5) (ne a1 a2) (ne a2 a3) (ne a3 a4) (ne a5 a6) (ne a6 a7) (ne a7 a8)))
+
+; 8. Which question is the only one with the same answer as this one?
+(iff (eq a8 0) (and (eq a4 0) (ne a1 0) (ne a2 0) (ne a3 0) (ne a5 0) (ne a6 0) (ne a7 0)))
+(iff (eq a8 1) (and (eq a2 1) (ne a1 1) (ne a3 1) (ne a4 1) (ne a5 1) (ne a6 1) (ne a7 1)))
+(iff (eq a8 2) (and (eq a3 2) (ne a1 2) (ne a2 2) (ne a4 2) (ne a5 2) (ne a6 2) (ne a7 2)))
+(iff (eq a8 3) (and (eq a7 3) (ne a1 3) (ne a2 3) (ne a3 3) (ne a4 3) (ne a5 3) (ne a6 3)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
